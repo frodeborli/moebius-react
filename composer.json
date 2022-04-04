@@ -1,0 +1,29 @@
+{
+    "name": "moebius/loop-reactbridge",
+    "description": "Provides an implementation of react/event-loop to enable using ReactPHP packages with Moebius or Amphp.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Moebius\\React\\": "src/",
+            "React\\EventLoop\\": "react/event-loop/"
+        },
+        "files": ["integrate.php"]
+    },
+    "authors": [
+        {
+            "name": "Frode Børli",
+            "email": "frode@ennerd.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "moebius/loop": "^0.0.7"
+    },
+    "replace": {
+        "react/event-loop": "^1.2"
+    },
+    "require-dev": {
+        "react/child-process": "dev-master"
+    }
+}
