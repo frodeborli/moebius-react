@@ -7,8 +7,7 @@
         "psr-4": {
             "Moebius\\React\\": "src/",
             "React\\EventLoop\\": "react/event-loop/"
-        },
-        "files": ["integrate.php"]
+        }
     },
     "authors": [
         {

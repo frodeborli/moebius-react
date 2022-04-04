@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b4712510914b2bad3a79c75763856c5",
+    "content-hash": "a3f3afcc3f6c0b78f6f66818c78412b0",
     "packages": [
         {
             "name": "moebius/loop",
-            "version": "0.0.7-alpha",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/frodeborli/moebius-loop.git",
@@ -29,6 +29,7 @@
             "suggest": {
                 "ext-pcntl": "For signal handling support"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -272,6 +273,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "moebius/loop": 20,
         "react/child-process": 20
     },
     "prefer-stable": false,
