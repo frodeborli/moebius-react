@@ -29,6 +29,8 @@
     },
     "require-dev": {
         "react/child-process": ">=0",
-        "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35"
+        "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35",
+        "react/dns": "^1.9",
+        "react/promise-timer": "^1.8"
     }
 }
