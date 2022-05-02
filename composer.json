@@ -1,12 +1,17 @@
 {
-    "name": "moebius/loop-reactbridge",
-    "description": "Provides an implementation of react/event-loop to enable using ReactPHP packages with Moebius or Amphp.",
+    "name": "moebius/react",
+    "description": "Enables asynchronous React libraries to be used with moebius/coroutine.",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Moebius\\React\\": "src/",
-            "React\\EventLoop\\": "react/event-loop/"
+            "Moebius\\React\\": "src/"
+        },
+        "files": [ "integrate.php" ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "React\\Tests\\EventLoop\\": "tests"
         }
     },
     "authors": [
@@ -16,13 +21,14 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "moebius/loop": "dev-master"
-    },
-    "replace": {
-        "react/event-loop": "^1.2"
+        "moebius/coroutine": ">=1.0",
+        "react/event-loop": "^1.3",
+        "charm/testing": "^0.0.9"
     },
     "require-dev": {
-        "react/child-process": "dev-master"
+        "react/child-process": ">=0",
+        "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35"
     }
 }
