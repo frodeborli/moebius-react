@@ -25,12 +25,15 @@
     "require": {
         "moebius/coroutine": ">=1.0",
         "react/event-loop": "^1.3",
-        "charm/testing": "^0.0.9"
+        "charm/testing": "^1"
     },
     "require-dev": {
         "react/child-process": ">=0",
         "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35",
         "react/dns": "^1.9",
         "react/promise-timer": "^1.8"
+    },
+    "scripts": {
+        "test": "vendor/bin/charm-testing"
     }
 }
