@@ -1,1 +1,2 @@
-This library is being abandoned. Moebius will support running with React based applications directly.
+This library is being transformed into a pure testing library for testing Moebius coroutines support for
+the React event loop API.
