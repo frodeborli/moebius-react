@@ -31,7 +31,8 @@
         "react/child-process": ">=0",
         "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35",
         "react/dns": "^1.9",
-        "react/promise-timer": "^1.8"
+        "react/promise-timer": "^1.8",
+        "react/http": "^1.6"
     },
     "scripts": {
         "test": "vendor/bin/charm-testing"

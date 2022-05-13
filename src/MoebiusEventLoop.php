@@ -24,8 +24,7 @@ final class MoebiusEventLoop extends Kernel implements LoopInterface
     private array $readStreams = [];
     private array $writeStreams = [];
     private array $signals = [];
-
-    private WeakMap $timers;
+    private array $deferred = [];
 
     /**
      * True if jobs are allowed to run
@@ -39,7 +38,27 @@ final class MoebiusEventLoop extends Kernel implements LoopInterface
 
     public function __construct()
     {
-        $this->timers = new \WeakMap();
+        Co::go($this->loopRunner(...));
+    }
+
+    /**
+     * Faster way to run React's futureTick callbacks, instead of creating a coroutine
+     * for each.
+     */
+    private function loopRunner() {
+        $i = 0;
+        do {
+            $deferred = $this->deferred;
+            $this->deferred = [];
+            foreach ($deferred as $task) {
+                try {
+                    $task();
+                } catch (\Throwable $e) {
+                    echo "Exception from react loop: ".$e->getMessage()."\n";
+                }
+            }
+            Co::suspend();
+        } while ($this->runnable);
     }
 
     /**
@@ -99,7 +118,7 @@ final class MoebiusEventLoop extends Kernel implements LoopInterface
 
             $this->readStreams[$id] = true;
             Co::go(function () use ($id, $stream, $listener) {
-                Co::suspend();
+//                Co::suspend();
                 start:
                 for (;;) {
                     if (!is_resource($stream)) {
@@ -187,7 +206,7 @@ final class MoebiusEventLoop extends Kernel implements LoopInterface
 
             $this->writeStreams[$id] = true;
             Co::go(function () use ($id, $stream, $listener) {
-                Co::suspend();
+//                Co::suspend();
                 start:
                 for (;;) {
                     if (!is_resource($stream)) {
@@ -498,11 +517,14 @@ final class MoebiusEventLoop extends Kernel implements LoopInterface
      */
     public function futureTick($listener)
     {
+        $this->deferred[] = $listener;
+/*
         Co::go(function() use ($listener) {
             Co::suspend();
             $this->checkRunnable();
             $listener();
         });
+*/
     }
 
     /**

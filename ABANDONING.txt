@@ -1,0 +1,1 @@
+This library is being abandoned. Moebius will support running with React based applications directly.
